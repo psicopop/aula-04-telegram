@@ -1,10 +1,10 @@
-from openai import OpenAI
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, filters
 
+import os
 # 🔹 Inicializa o cliente OpenAI
 client = OpenAI(
-    api_key="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"  # troque pela sua chave
+    api_key=os.getenv("OPENAI_API_KEY")  # Lê a chave da variável de ambiente
 )
 
 # 🔹 Token do seu bot do Telegram
@@ -14,7 +14,7 @@ USER = '@meu_bot_magic_bot'
 # 🔹 Mensagens padrão do sistema
 messages = [
     {"role": "system", "content": "Você é um assistente virtual chamado João Boleiro."},
-    {"role": "system", "content": "Você responde perguntas de amantes de futebol. Se o contexto da conversa fugir deste tema despeça educadamente."},
+    {"role": "system", "content": "Você responde perguntas de futebol. Se o contexto da conversa fugir deste tema despeça educadamente."},
     {"role": "system", "content": "Você é um assistente útil e amigável."}
 ]
 
